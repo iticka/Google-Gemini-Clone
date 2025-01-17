@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import DOMPurify from 'dompurify';
 import './Main.css'
 import {assets} from '../../assets/assets/assets'
 import { Context } from '../../context/Context'
@@ -17,6 +18,7 @@ const Main = () => {
         setInput(prompt) 
         onSent(prompt) 
     }
+    
 
   return (
     <div className='main'>
@@ -63,7 +65,7 @@ const Main = () => {
                             <hr />
                             <hr />
                         </div> :
-                        <p dangerouslySetInnerHTML={{__html:resultData}}></p> 
+                        <p dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(resultData)}}></p> 
                         }
                     </div>
                  </div>}
